@@ -1,0 +1,92 @@
+{
+    "projectDetails": [
+      {
+        "id": "12345",
+        "title": "Gaming Dice Boxes",
+        "description": "Dice boxes I made for my daughter and the rest of her party. Used a friends laser cutter to generate the illustrations",
+        "imageUrls": [
+          "https://elscrfbahxirikrgqdwc.supabase.co/storage/v1/object/sign/maker_images/12345/IMG_2304.jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJtYWtlcl9pbWFnZXMvMTIzNDUvSU1HXzIzMDQuanBlZyIsImlhdCI6MTc0MDE2MDY0OSwiZXhwIjoyMzcwODgwNjQ5fQ.06g4_NWCo6HrXjH-PXTUD5ieERqrzGgJdELTmzPLaTU"
+        ],
+        "tags": [
+          "maple",
+          "boxes",
+          "laser-cutter",
+          "dice-boxes"
+        ],
+        "difficulty": 2,
+        "startDate": "2023-01-01",
+        "endDate": "2023-06-01",
+        "materials": [
+          "maple",
+          "hobby_ply",
+          "felt"
+        ],
+        "dimensions": "5\" x 5\"",
+        "projectProgress": {
+          "projectId": "b1aca791-c041-4ed3-b041-265783908f05",
+          "status": "Completed",
+          "completedDate": "2024-10-01",
+          "startDate": "2025-01-10",
+          "progression": 100
+        }
+      },
+      {
+        "id": "12346",
+        "title": "Heywood Wakefield refurbish",
+        "description": "Wife found this old HW end table at our local thrift store for $40 bucks. After some sanding and a refinish its a good ad new.",
+        "imageUrls": [
+          "https://elscrfbahxirikrgqdwc.supabase.co/storage/v1/object/sign/maker_images/12346/IMG_2191.jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJtYWtlcl9pbWFnZXMvMTIzNDYvSU1HXzIxOTEuanBlZyIsImlhdCI6MTc0MDE3Mjk2OSwiZXhwIjoyMzcwODkyOTY5fQ.jx33E-iPVO1Zztyv6_GYPeYafnrNcDnKTmXHMZG6v2E"
+        ],
+        "tags": [
+          "furniture",
+          "cherry",
+          "table"
+        ],
+        "difficulty": 4,
+        "startDate": "2023-01-01",
+        "endDate": "2023-06-01",
+        "materials": [
+          "maple",
+          "brass",
+          "cherry"
+        ],
+        "dimensions": "24\" x 48\"",
+        "projectProgress": {
+          "projectId": "b1aca791-c041-4ed3-b041-265783908f05",
+          "status": "In Progress",
+          "completedDate": "",
+          "startDate": "2023-01-01",
+          "progression": 47
+        }
+      },
+      {
+        "id": "12347",
+        "title": "Kura Hack to make a kid castle bed",
+        "description": "Castle bed for the kids room.",
+        "imageUrls": [
+          "https://elscrfbahxirikrgqdwc.supabase.co/storage/v1/object/sign/maker_images/12347/IMG_2357.JPG?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJtYWtlcl9pbWFnZXMvMTIzNDcvSU1HXzIzNTcuSlBHIiwiaWF0IjoxNzQwMzU5NjkyLCJleHAiOjIzNzEwNzk2OTJ9.mdiFsVGv_4l_zZc2vymC_MJpTfljfywb63RDmMhhngY"
+        ],
+        "tags": [
+          "hacks",
+          "bed",
+          "kura"
+        ],
+        "difficulty": 4,
+        "startDate": "2023-01-01",
+        "endDate": "2023-06-01",
+        "materials": [
+          "pine_1X6",
+          "IKea_Kura"
+        ],
+        "dimensions": "24\" x 48\"",
+        "projectProgress": {
+          "projectId": "b1aca791-c041-4ed3-b041-265783908f05",
+          "status": "Finished",
+          "completedDate": "",
+          "startDate": "2023-01-01",
+          "progression": 100
+        }
+      }
+    ]
+}
+  
