@@ -24,6 +24,12 @@
       </div>
     </div>
   </div>
+
+  <DetailView 
+    v-if="selectedProject"
+    :project="selectedProject"
+    v-model:visible="showDetailView"
+  />
 </template>
 
 <script setup lang="ts">
