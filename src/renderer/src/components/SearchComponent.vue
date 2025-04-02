@@ -15,12 +15,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import projectData from '../data/data.json'
+import { ref, onMounted } from 'vue'
+import { useProjectStore } from '../stores/projectStore'
+import type { Project } from '../stores/projectStore'
 import SearchResults from './SearchResults.vue'
 
 const searchQuery = ref('')
-const searchResults = ref([])
+const projectStore = useProjectStore()
+const searchResults = ref<Project[]>([])
+
+onMounted(async () => {
+  await projectStore.fetchProjects()
+})
 
 const handleSearch = () => {
   if (!searchQuery.value.trim()) {
@@ -28,11 +34,7 @@ const handleSearch = () => {
     return
   }
 
-  const query = searchQuery.value.toLowerCase()
-  searchResults.value = projectData.projectDetails.filter(project => 
-    project.title.toLowerCase().includes(query) ||
-    project.description.toLowerCase().includes(query)
-  )
+  searchResults.value = projectStore.getFilteredProjects(searchQuery.value)
 }
 </script>
 
