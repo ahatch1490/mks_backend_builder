@@ -1,19 +1,21 @@
 import './assets/main.css'
-
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import App from './App.vue'
+import vuetify from './plugins/vuetify'
+import PrimeVue from 'primevue/config'
 
 // PrimeVue imports
-import PrimeVue from 'primevue/config'
 import 'primeicons/primeicons.css'
-import Aura from '@primeuix/themes/aura';
 
 const app = createApp(App)
-app.use(PrimeVue)
+const pinia = createPinia()
+
+app.use(vuetify)
+app.use(pinia)
 app.use(PrimeVue, {
-    theme: {
-        preset: Aura
-    }
-});
+    unstyled: true
+})
+
 app.mount('#app')
 
