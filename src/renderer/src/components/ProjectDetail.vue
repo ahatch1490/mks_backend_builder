@@ -2,7 +2,8 @@
   <div class="project-detail">
     <!-- Header -->
     <div class="header">
-      <h1>{{ project.title }}</h1>
+      <h1> {{ project.title }}</h1>
+      <h1> {{ project.title }}</h1>
       <span class="status" :class="project.projectProgress.status.toLowerCase()">{{ project.projectProgress.status }}</span>
     </div>
 
@@ -50,7 +51,7 @@
       <h2>Project Progress</h2>
       <div class="progress-info">
         <div class="progress-bar">
-          <div 
+          <div
             class="progress-fill"
             :style="{ width: `${project.projectProgress.progression}%` }"
           ></div>
@@ -67,26 +68,7 @@
 </template>
 
 <script setup lang="ts">
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  imageUrls: string[];
-  tags: string[];
-  difficulty: number;
-  startDate: string;
-  endDate: string;
-  materials: string[];
-  dimensions: string;
-  projectProgress: {
-    projectId: string;
-    status: string;
-    completedDate: string;
-    startDate: string;
-    progression: number;
-  };
-}
-
+import { Project } from "../types/Project";
 defineProps<{
   project: Project;
 }>();

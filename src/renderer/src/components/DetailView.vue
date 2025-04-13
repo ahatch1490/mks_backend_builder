@@ -7,143 +7,35 @@
     :closable="false"
   >
     <div class="content-card">
-      <Button icon="pi pi-times" class="close-button" @click="$emit('update:visible', false)" text />
-      <div class="card-header">
-        <h1>{{ project.title }}</h1>
-        <div class="tags">
-          <Chip v-for="tag in project.tags" :key="tag" :label="tag" class="mr-2" />
-        </div>
-      </div>
-
-      <div class="detail-content">
-        <div class="description">
-          <h2>Description</h2>
-          <p>{{ project.description }}</p>
-        </div>
-
-        <div class="project-info">
-          <div class="info-section">
-            <h2>Project Details</h2>
-            <div class="info-grid">
-              <div class="info-item">
-                <span class="label">Difficulty:</span>
-                <span class="value">
-                  <Rating :modelValue="project.difficulty" :readonly="true" :cancel="false" />
-                </span>
-              </div>
-              <div class="info-item">
-                <span class="label">Dimensions:</span>
-                <span class="value">{{ project.dimensions }}</span>
-              </div>
-              <div class="info-item">
-                <span class="label">Start Date:</span>
-                <span class="value">{{ project.startDate }}</span>
-              </div>
-              <div class="info-item">
-                <span class="label">End Date:</span>
-                <span class="value">{{ project.endDate }}</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="info-section">
-            <h2>Materials</h2>
-            <div class="materials">
-              <Chip v-for="material in project.materials" :key="material" :label="material" class="mr-2" severity="info" />
-            </div>
-          </div>
-
-          <div class="info-section">
-            <h2>Progress</h2>
-            <div class="progress-info">
-              <ProgressBar :value="project.projectProgress.progression" :showValue="true" />
-              <span class="status" :class="project.projectProgress.status.toLowerCase()">
-                {{ project.projectProgress.status }}
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery" v-if="project.imageUrls.length > 0">
-          <h2>Gallery</h2>
-          <div class="image-grid">
-            <img v-for="(url, index) in project.imageUrls" 
-                 :key="index" 
-                 :src="url" 
-                 :alt="'Project image ' + (index + 1)"
-                 class="gallery-image"
-                 @click="openLightbox(index)" />
-          </div>
-        </div>
-
-        <div class="other-projects" v-if="project.otherProjects && project.otherProjects.length > 0">
-          <h2>Other Projects</h2>
-          <div class="other-projects-grid">
-            <div v-for="otherProject in project.otherProjects" 
-                 :key="otherProject.id" 
-                 class="other-project-card"
-                 @click="handleOtherProjectClick(otherProject)">
-              <img :src="otherProject.image_url" :alt="otherProject.title" class="other-project-image" />
-              <div class="other-project-info">
-                <h3>{{ otherProject.title }}</h3>
-                <ProgressBar :value="otherProject.progression" :showValue="true" />
-                <Rating :modelValue="otherProject.difficulty" :readonly="true" :cancel="false" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ProjectDetail v-if="project" :project="project"></ProjectDetail>
     </div>
   </Dialog>
 </template>
 
 <script setup lang="ts">
 import Dialog from 'primevue/dialog'
-import ProgressBar from 'primevue/progressbar'
-import Rating from 'primevue/rating'
-import Chip from 'primevue/chip'
-import Button from 'primevue/button'
 
-const props = defineProps<{
-  project: {
-    id: string;
-    title: string;
-    description: string;
-    tags: string[];
-    difficulty: number;
-    dimensions: string;
-    startDate: string;
-    endDate: string;
-    materials: string[];
-    projectProgress: {
-      status: string;
-      progression: number;
-    };
-    imageUrls: string[];
-    otherProjects?: Array<{
-      id: string;
-      title: string;
-      progression: number;
-      difficulty: number;
-      image_url: string;
-    }>;
-  } | null;
+import ProjectDetail from "@renderer/components/ProjectDetail.vue";
+import { Project } from "@renderer/types/Project";
+
+defineProps<{
+  project: Project | null;
   visible: boolean;
 }>();
 
-const emit = defineEmits<{
-  (e: 'update:visible', value: boolean): void;
-}>();
-
-const openLightbox = (index: number) => {
-  // TODO: Implement lightbox functionality
-  console.log('Open image at index:', index);
-};
-
-const handleOtherProjectClick = (project: any) => {
-  // TODO: Implement navigation to other project
-  console.log('Navigate to project:', project.id);
-};
+// const emit = defineEmits<{
+//   (e: 'update:visible', value: boolean): void;
+// }>();
+//
+// const openLightbox = (index: number) => {
+//   // TODO: Implement lightbox functionality
+//   console.log('Open image at index:', index);
+// };
+//
+// const handleOtherProjectClick = (project: any) => {
+//   // TODO: Implement navigation to other project
+//   console.log('Navigate to project:', project.id);
+// };
 </script>
 
 <style scoped>
