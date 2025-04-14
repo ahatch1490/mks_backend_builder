@@ -1,22 +1,25 @@
 <template>
-  <Dialog 
-    :visible="visible" 
-    @update:visible="$emit('update:visible', $event)"
-    :modal="true" 
-    :style="{ width: '90vw', maxWidth: '1200px' }" 
+  <Dialog
+    :visible="visible"
+    :modal="true"
+    :style="{ width: '90vw', maxWidth: '1200px' }"
     :closable="false"
+    @update:visible="$emit('update:visible', $event)"
   >
     <div class="content-card">
       <ProjectDetail v-if="project" :project="project"></ProjectDetail>
+      <hr />
+      <ProjectEdit v-if="project" :project="project"></ProjectEdit>
     </div>
   </Dialog>
 </template>
 
 <script setup lang="ts">
-import Dialog from 'primevue/dialog'
+import Dialog from "primevue/dialog";
 
 import ProjectDetail from "@renderer/components/ProjectDetail.vue";
 import { Project } from "@renderer/types/Project";
+import ProjectEdit from "@renderer/components/ProjectEdit.vue";
 
 defineProps<{
   project: Project | null;
@@ -166,15 +169,15 @@ defineProps<{
 }
 
 .status.completed {
-  color: #4CAF50;
+  color: #4caf50;
 }
 
 .status.in_progress {
-  color: #FFA726;
+  color: #ffa726;
 }
 
 .status.finished {
-  color: #4CAF50;
+  color: #4caf50;
 }
 
 .gallery {
@@ -254,11 +257,11 @@ defineProps<{
 }
 
 :deep(.p-rating .p-rating-item.p-rating-item-active .p-rating-icon) {
-  color: #FFA726;
+  color: #ffa726;
 }
 
 :deep(.p-progressbar .p-progressbar-value) {
-  background: #4CAF50;
+  background: #4caf50;
 }
 
 :deep(.p-progressbar) {
@@ -266,4 +269,4 @@ defineProps<{
   border-radius: 6px;
   height: 1rem;
 }
-</style> 
+</style>

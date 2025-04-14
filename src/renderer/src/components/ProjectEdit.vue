@@ -1,35 +1,34 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { Project } from "@renderer/types/Project";
 
 // Props for handling a project passed into this component
-const props = defineProps({
-  project: {
-    type: Object as () => { id: number; name: string; description: string },
-    required: true,
-  },
-});
+const props = defineProps<{
+  project: Project;
+}>();
 
-const sliderValue = ref(5);
 // Emit edited data back to parent if needed
 const emit = defineEmits(["save", "cancel"]);
-
+const edit = ref<Project>(JSON.parse(JSON.stringify(props.project)));
 // Editable fields
-const editableName = ref(props.project.name);
-const editableDescription = ref(props.project.description);
-
+const editableName = ref(props.project?.title ?? '');
+const editableDescription = ref(props.project?.description ?? '');
+const sliderValue = ref(3);
 // Methods to handle save and cancel actions
 const saveChanges = (): void => {
-  emit("save", {
-    id: props.project.id,
-    name: editableName.value,
-    description: editableDescription.value,
-  });
+  if (props.project) {
+    emit("save", {
+      id: props.project.id,
+      name: editableName.value,
+      description: editableDescription.value,
+    });
+  }
 };
 
 const cancelEdit = (): void => {
   // Reset the fields back to their original values
-  editableName.value = props.project.name;
-  editableDescription.value = props.project.description;
+  editableName.value = edit.value?.title ?? '';
+  editableDescription.value = edit.value?.description ?? '';
   emit("cancel");
 };
 </script>
@@ -42,7 +41,7 @@ const cancelEdit = (): void => {
         <label for="projectName" class="block font-medium">Project Name:</label>
         <input
           id="projectName"
-          v-model="editableName"
+          v-model="edit.title"
           type="text"
           class="border rounded w-full p-2"
         />
@@ -54,8 +53,7 @@ const cancelEdit = (): void => {
         >
         <Editor
           id="projectDescription"
-          v-model="editableDescription"
-          class="border rounded w-full p-2"
+          v-model="edit.description"
         ></Editor>
       </div>
 
@@ -75,8 +73,8 @@ const cancelEdit = (): void => {
         <div>
           <label for="prioritySlider" class="block font-medium"
             >Priority:</label>
-          <InputText v-model.number="slidervalue" />
-          <Slider v-model="sliderValue" />
+          <InputText :model="sliderValue" />
+          <Slider :model="sliderValue" />
         </div>
         <button
           type="button"
